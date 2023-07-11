@@ -29,6 +29,7 @@ public class TodosController {
     @PostMapping("/todo")
     public ResponseEntity<Todo> createTodo(@RequestBody CreateTodoDto createTodoDto) {
         final Todo todo = new Todo(UUID.randomUUID().toString(), createTodoDto.getText());
+        todos.put(todo.getId(), todo);
         return ResponseEntity.ok(todo);
     }
 
